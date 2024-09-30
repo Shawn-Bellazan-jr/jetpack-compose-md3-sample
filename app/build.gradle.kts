@@ -44,23 +44,25 @@ android {
 
 dependencies {
 
-    // Material Design 3
-    implementation(libs.androidx.material3)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    // Compose BOM for consistent versioning
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+
+    // Compose UI essentials
+    implementation(libs.bundles.compose.ui)
+
+    // Material Design 3 and icons
+    implementation(libs.bundles.material.design)
+
+    // Activity and Lifecycle integration
+    implementation(libs.bundles.activity.lifecycle)
+
+    // Core Android dependencies
+    implementation(libs.bundles.core.android)
+
+    // Test dependencies
+    testImplementation(libs.bundles.testing)
+
+    // Android-specific UI testing dependencies
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    androidTestImplementation(libs.bundles.testing)
 }
