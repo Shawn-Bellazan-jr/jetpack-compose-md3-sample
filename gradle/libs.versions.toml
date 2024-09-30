@@ -6,30 +6,93 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
-material = "1.12.0"
 lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
-composeBom = "2024.04.01"
+composeBom = "2024.09.02"
+lifecycleViewModelVersion = "2.8.5"
 
 [libraries]
+
+# Material Design 3
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+# Android Studio Preview support
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+
+# UI Tests
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+# Full set of material icons
+material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+
+# Integration with activities and ViewModels
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-lifecycle-viewmodel = { group = "androidx.activity", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewModelVersion" }
+
+# Integration with LiveData and RxJava
+androidx-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-rxjava2 = { group = "androidx.compose.runtime", name = "runtime-rxjava2" }
+
+# Core and AppCompat
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+
+# Testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Lifecycle
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+# Compose BOM and UI libraries
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+[bundles]
+
+# Bundle for Compose UI essentials
+compose-ui = [
+    "androidx-ui",
+    "androidx-ui-tooling-preview",
+    "androidx-ui-tooling",
+    "androidx-ui-graphics"
+]
+
+# Bundle for testing dependencies
+testing = [
+    "junit",
+    "androidx-junit",
+    "androidx-espresso-core",
+    "androidx-ui-test-junit4",
+    "androidx-ui-test-manifest"
+]
+
+# Bundle for Activity and Lifecycle integration
+activity-lifecycle = [
+    "androidx-activity-compose",
+    "androidx-lifecycle-runtime-ktx",
+    "androidx-lifecycle-viewmodel",
+    "androidx-livedata",
+    "androidx-rxjava2"
+]
+
+# Bundle for Material Design 3 and icons
+material-design = [
+    "androidx-material3",
+    "material-icons-extended"
+]
+
+# Bundle for core Android dependencies
+core-android = [
+    "androidx-core-ktx",
+    "androidx-appcompat"
+]
